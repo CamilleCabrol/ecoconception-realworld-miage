@@ -55,7 +55,7 @@
           <img
             [src]="currentUser.image"
             *ngIf="currentUser.image"
-            class="user-pic"
+            class="square"
           />
           {{ currentUser.username }}
         </a>
@@ -63,3 +63,22 @@
     </ul>
   </div>
 </nav>
+
+<style>
+  .square {
+    width: 50px;
+    height: 50px;
+    background: grey;
+    transform: rotateY(45deg);
+    animation: rotateAnimation 1s linear infinite;
+  }
+
+  @keyframes rotateAnimation {
+    from {
+      transform: rotateY(45deg);
+    }
+    to {
+      transform: rotateY(225deg);
+    }
+  }
+</style>

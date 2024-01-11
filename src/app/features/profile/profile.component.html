@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-12 col-md-10 offset-md-1">
-          <img [src]="profile.image" class="user-img" />
+          <img [src]="profile.image" class="square" />
           <h4>{{ profile.username }}</h4>
           <p>{{ profile.bio }}</p>
           <app-follow-button
@@ -57,3 +57,22 @@
     </div>
   </div>
 </div>
+
+<style>
+  .square {
+    width: 200px;
+    height: 200px;
+    background: grey;
+    transform: rotateY(45deg);
+    animation: rotateAnimation 1s linear infinite;
+  }
+
+  @keyframes rotateAnimation {
+    from {
+      transform: rotateY(45deg);
+    }
+    to {
+      transform: rotateY(225deg);
+    }
+  }
+</style>
