@@ -7,9 +7,9 @@
     <a class="author" [routerLink]="['/profile', article.author.username]">
       {{ article.author.username }}
     </a>
-    <span class="date">
+    <a [routerLink]="['/article', article.slug]" class="date">
       {{ article.createdAt | date : "longDate" }}
-    </span>
+    </a>
   </div>
 
   <ng-content></ng-content>

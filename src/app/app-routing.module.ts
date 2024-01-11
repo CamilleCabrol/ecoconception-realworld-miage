@@ -19,6 +19,23 @@ const routes: Routes = [
     ],
   },
   {
+    path: "errorco",
+    loadComponent: () =>
+      import("./features/errorco/errorco.component").then(
+        (m) => m.ErrorcoComponent
+      ),
+    canActivate: [
+      () => inject(UserService).isAuthenticated.pipe(map((isAuth) => !isAuth)),
+    ],
+  },
+  {
+    path: "confirm/:slug",
+    loadComponent: () =>
+      import("./features/confirm/confirm.component").then(
+        (m) => m.ConfirmComponent
+      ),
+  },
+  {
     path: "register",
     loadComponent: () =>
       import("./core/auth/auth.component").then((m) => m.AuthComponent),
