@@ -26,6 +26,7 @@ import { ShowAuthedDirective } from "../../shared/show-authed.directive";
 })
 export class HomeComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
+  currentIndex = 0;
   listConfig: ArticleListConfig = {
     type: "all",
     filters: {},
@@ -72,5 +73,29 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     // Otherwise, set the list object
     this.listConfig = { type: type, filters: filters };
+  }
+
+  showSlide(index: number): void {
+    const carousel = document.getElementById("image-carousel");
+    const slides = document.getElementsByClassName("carousel-image");
+
+    if (index >= slides.length) {
+      this.currentIndex = 0;
+    } else if (index < 0) {
+      this.currentIndex = slides.length - 1;
+    } else {
+      this.currentIndex = index;
+    }
+
+    const offset = -this.currentIndex * 100 + "%";
+    carousel!.style.transform = "translateX(" + offset + ")";
+  }
+
+  nextSlide(): void {
+    this.showSlide(this.currentIndex + 1);
+  }
+
+  prevSlide(): void {
+    this.showSlide(this.currentIndex - 1);
   }
 }
